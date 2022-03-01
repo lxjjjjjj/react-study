@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# react类组件为什么挂载事件要绑定this
+JSX语法实际上是createElement的语法糖
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div>Hello, { this.props.name }</div>
+等价于
+React.createElement( ‘div’,null, `Hello,${this.props.name}` )
 
-## Available Scripts
+createElement伪代码
+function createElement(dom, params) {
+  var domObj = document.createElement(dom);
+  domObj.onclick = params.onclick; *
+  domObj.innerHTML = params.conent;
+  return domObj
+}
+标注*的代码会发生this指针丢失问题
 
-In the project directory, you can run:
+这是一个JavaScript语言的问题，和是否React无关。看个例子
+let obj = {
+    tmp:'Yes!',
+    testLog:function(){
+        console.log(this.tmp);
+    }
+};
+obj.testLog(); // Yes！
+// this指向obj，能够正常输出tmp属性;
 
-### `npm start`
+修改一下代码：
+let obj = {
+    tmp:'Yes!',
+    testLog:function(){
+        console.log(this.tmp);
+    }
+};
+let tmpLog = obj.testLog; // 中间变量
+tmpLog(); // undefined
+// 没有直接调用obj对象中的testLog方法,而是使用了一个tmpLog过渡
+// 当调用tmpLog()时，方法中的this丢失了指向，默认指向window
+// window.tmp未定义就是undefined;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+在JavaScript中，如果你传递一个函数名给一个变量，然后通过在变量后加括号()来调用这个方法，此时方法内部的this的指向就会丢失。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+onclick事件触发
+button被点击时，触发onClick事件，此时this就指向了window
 
-### `npm test`
+为什么箭头函数方式不需要bind this
+箭头函数内没有this，默认用父级作用域的this。
+当使用new关键字时，this指向新对象，同时箭头函数中的this也被赋值为了新对象且永远不会更改指向。
+等价于如下形式
+//在构造函数内：
+let _this = this
+funtion fn(){
+    console.log(_this)
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
