@@ -14,6 +14,8 @@ import CounterSix from './components/在effect内的异步函数内获取最新�
 import CounterSeven from './components/effect的清除/index'
 import CounterEight from './components/定时器只在组件挂载时执行一次/index'
 import CounterNine from './components/解耦来自actions的更新/index'
+import CounterTen from './components/为什么useReducer是Hooks的作弊模式/index'
+import CounterEleven from './components/把函数移到useEffect里/index'
 function App() {
   return (
     <div className="App">
@@ -31,7 +33,7 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <CounterNine/>
+      <CounterEleven/>
     </div>
   );
 }
