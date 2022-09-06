@@ -1,0 +1,1 @@
+使用方法就是将doc里的useState、useMemo等函数依次放到src/index.js文件中并且npm run start
