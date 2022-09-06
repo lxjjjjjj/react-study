@@ -22,7 +22,7 @@ function useCallback(callback,dependencies){
 function Child({data}) {
     console.log("天啊，我怎么被渲染啦，我并不希望啊")
     return (
-        <div>child</div>
+        <div>child{data}</div>
     )
 }
 // eslint-disable-next-line
@@ -33,7 +33,7 @@ function App(){
     const addClick = useCallback(()=>{console.log("addClick")},[])
     return (
         <div>
-
+            {count}
             <Child data={123} onClick={addClick}></Child>
             <button onClick={() => { setCount(count + 1)}}>
                 增加
