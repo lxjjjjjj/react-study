@@ -33,7 +33,7 @@ function App(){
     let data = useMemo(()=> ({number}),[number])
     return (
         <div>
-
+            {count}
             <Child data={data}></Child>
             <button onClick={() => { setCount(count + 1)}}>
                 增加

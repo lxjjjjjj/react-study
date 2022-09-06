@@ -1,28 +1,27 @@
-import React ,{useState,memo}from 'react';
+import React ,{useState,memo,}from 'react';
 import ReactDOM from 'react-dom';
-let lastCallback
+let lastMemo
 // eslint-disable-next-line
-let lastCallbackDependencies
-function useCallback(callback,dependencies){
-    if(lastCallbackDependencies){
+let lastMemoDependencies
+function useMemo(callback,dependencies){
+    if(lastMemoDependencies){
         let changed = !dependencies.every((item,index)=>{
-            return item === lastCallbackDependencies[index]
+            return item === lastMemoDependencies[index]
         })
         if(changed){
-            lastCallback = callback
-            lastCallbackDependencies = dependencies
+            lastMemo = callback()
+            lastMemoDependencies = dependencies
         }
     }else{ // 没有传入依赖项
-
-        lastCallback = callback
-        lastCallbackDependencies = dependencies
+        lastMemo = callback()
+        lastMemoDependencies = dependencies
     }
-    return lastCallback
+    return lastMemo
 }
 function Child({data}) {
     console.log("天啊，我怎么被渲染啦，我并不希望啊")
     return (
-        <div>child{data}</div>
+        <div>child</div>
     )
 }
 // eslint-disable-next-line
@@ -30,11 +29,12 @@ Child = memo(Child)
 function App(){
     const [count, setCount] = useState(0);
     // eslint-disable-next-line
-    const addClick = useCallback(()=>{console.log("addClick")},[])
+    const [number, setNumber] = useState(20)
+    let data = useMemo(()=> ({number}),[number])
     return (
         <div>
             {count}
-            <Child data={123} onClick={addClick}></Child>
+            <Child data={data}></Child>
             <button onClick={() => { setCount(count + 1)}}>
                 增加
             </button>
