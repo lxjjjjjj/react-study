@@ -1,49 +1,49 @@
-import React ,{useState,memo,}from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-let lastMemo
-// eslint-disable-next-line
-let lastMemoDependencies
-function useMemo(callback,dependencies){
-    if(lastMemoDependencies){
-        let changed = !dependencies.every((item,index)=>{
-            return item === lastMemoDependencies[index]
-        })
-        if(changed){
-            lastMemo = callback()
-            lastMemoDependencies = dependencies
-        }
-    }else{ // 没有传入依赖项
-        lastMemo = callback()
-        lastMemoDependencies = dependencies
+
+let lastState
+// useReducer原理
+function useReducer(reducer,initialState){
+    lastState = lastState || initialState
+    function dispatch(action){
+        lastState = reducer(lastState,action)
+        render()
     }
-    return lastMemo
+    return [lastState,dispatch]
 }
-function Child({data}) {
-    console.log("天啊，我怎么被渲染啦，我并不希望啊")
-    return (
-        <div>child</div>
-    )
+
+// 官方 useReducer Demo
+// 第一个参数：应用的初始化
+const initialState = {count: 0};
+
+// 第二个参数：state的reducer处理函数
+function reducer(state, action) {
+    switch (action.type) {
+        case 'increment':
+            return {count: state.count + 1};
+        case 'decrement':
+            return {count: state.count - 1};
+        default:
+            throw new Error();
+    }
 }
-// eslint-disable-next-line
-Child = memo(Child)
-function App(){
-    const [count, setCount] = useState(0);
-    // eslint-disable-next-line
-    const [number, setNumber] = useState(20)
-    let data = useMemo(()=> ({number}),[number])
+
+function Counter() {
+    // 返回值：最新的state和dispatch函数
+    const [state, dispatch] = useReducer(reducer, initialState);
     return (
-        <div>
-            {count}
-            <Child data={data}></Child>
-            <button onClick={() => { setCount(count + 1)}}>
-                增加
-            </button>
-        </div>
+        <>
+            {/* // useReducer会根据dispatch的action，返回最终的state，并触发rerender */}
+            Count: {state.count}
+            {/* // dispatch 用来接收一个 action参数「reducer中的action」，用来触发reducer函数，更新最新的状态 */}
+            <button onClick={() => dispatch({type: 'increment'})}>+</button>
+            <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+        </>
     );
 }
 function render(){
     ReactDOM.render(
-        <App />,
+        <Counter />,
         document.getElementById('root')
     );
 }
