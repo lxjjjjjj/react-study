@@ -1,7 +1,8 @@
+import { useEffect, useState } from 'react'
 // 不要创建旧的闭包 
 // useEffect(callback, deps)
 // useCallback(callback, deps)
-export default WatchCount = () => {
+const WatchCount = () => {
   const [count, setCount] = useState(0);
 
 
@@ -33,4 +34,4 @@ export default WatchCount = () => {
     </>
   );
 }
-
+export default WatchCount
