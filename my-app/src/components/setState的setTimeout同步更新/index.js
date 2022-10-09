@@ -1,6 +1,6 @@
 
 
-  import React from 'react'
+  import React, { useState } from 'react'
   class Counter extends React.Component {
     constructor(props) {
       super(props);
@@ -20,11 +20,21 @@
         //     console.log(this.state); // 2
         // });
         // Promise.resolve().then(() => {
-			this.setState({ number: this.state.number + 1 });
-			console.log(this.state); // 1
-			this.setState({ number: this.state.number + 1 });
-			console.log(this.state); // 2
+			// this.setState({ number: this.state.number + 1 });
+			// console.log(this.state); // 1
+			// this.setState({ number: this.state.number + 1 });
+			// console.log(this.state); // 2
 		// });
+        this.setState((state) => {
+            console.log(state.number, 'number'); // 上一次是1
+            return { number: state.number + 1 };
+        })
+        console.log(this.state); // 1
+        this.setState((state) => {
+            console.log(state.number, 'number'); // 上一次是1
+            return { number: state.number + 1 };
+        });
+        console.log(this.state); // 2
     };
   
     render() {
@@ -38,6 +48,22 @@
   }
   
 //   const element = <Counter></Counter>;
-  
 //   ReactDOM.render(element, document.getElementById('root'));
+// function Counter(){
+//     const [number, setNumber] = useState(0)
+//     const handleClick = () => {
+//         setTimeout(() => {
+//             setNumber(number => number + 1)
+//             console.log('number',number)
+//             setNumber(number => number + 1)
+//             console.log('number',number)
+//         })
+//     }
+//     return (
+//         <div>
+//             <p>{number}</p>
+//             <button onClick={handleClick}>+</button>
+//         </div>
+//         );
+// }
   export default Counter
