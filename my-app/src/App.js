@@ -16,6 +16,7 @@ import CounterEight from './components/定时器只在组件挂载时执行一�
 import CounterNine from './components/解耦来自actions的更新/index'
 import CounterTen from './components/为什么useReducer是Hooks的作弊模式/index'
 import CounterEleven from './components/把函数移到useEffect里/index'
+import Event from './components/解耦来自actions的更新'
 function App() {
   return (
     <div className="App">
@@ -33,7 +34,7 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <CounterEleven/>
+      <Event/>
     </div>
   );
 }
