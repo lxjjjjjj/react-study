@@ -22,7 +22,7 @@ function Counter({ step }) {
         dispatch({ type: 'tick' });
       }, 1000);
       return () => clearInterval(id);
-    }, [dispatch]);
+    }, []);
   
     return <h1>{count}</h1>;
   }

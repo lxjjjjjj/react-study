@@ -5,6 +5,7 @@ import ParentTwo from './components/two/parentTwo'
 import ParentThree from './components/three/parentThree'
 import ParentFour from './components/four/ParentFour'
 import ParentFive from './components/five/ParentFive'
+import Seven from './components/seven/index'
 import Counter from './components/每次渲染都有新的props和state/index'
 import CounterTwo from './components/每一次渲染都有它自己的事件处理函数/index'
 import CounterThree from './components/每次渲染都有它自己的Effects/index'
@@ -17,6 +18,8 @@ import CounterNine from './components/解耦来自actions的更新/index'
 import CounterTen from './components/为什么useReducer是Hooks的作弊模式/index'
 import CounterEleven from './components/把函数移到useEffect里/index'
 import Event from './components/解耦来自actions的更新'
+import SyncSetState from './components/setState的setTimeout同步更新/index'
+import UseReducer from './components/useReducer的dispatch/parent'
 function App() {
   return (
     <div className="App">
@@ -35,6 +38,7 @@ function App() {
         </a>
       </header> */}
       <Event/>
+      {/* <UseReducer/> */}
     </div>
   );
 }

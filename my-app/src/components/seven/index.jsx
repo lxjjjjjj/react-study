@@ -1,5 +1,6 @@
 // 不要使用旧的状态
-export default Increaser = () => {
+import { useState, useCallback } from 'react'
+const Increaser = () => {
   const [count, setCount] = useState(0);
   
   const increase = useCallback(() => {
@@ -11,6 +12,11 @@ export default Increaser = () => {
     increase();
     increase();
     increase();
+    // setTimeout(() => {
+      // setCount(count + 1);
+      // setCount(count + 1);
+      // setCount(count + 1);
+    // })
   };
   // 这里的handleClick方法会在点击按钮后执行三次增加状态变量count的操作。那么点击一次是否会增加3呢？事实并非如此。点击按钮之后，count只会增加1。问题就在于，当我们点击按钮时，相当于下面的操作：
   // const handleClick = () => {
@@ -26,3 +32,4 @@ export default Increaser = () => {
     </>
   );
 }
+export default Increaser
