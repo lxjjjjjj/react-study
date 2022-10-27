@@ -17,6 +17,7 @@ import CounterEight from './components/定时器只在组件挂载时执行一�
 import CounterNine from './components/解耦来自actions的更新/index'
 import CounterTen from './components/为什么useReducer是Hooks的作弊模式/index'
 import CounterEleven from './components/把函数移到useEffect里/index'
+import Event from './components/解耦来自actions的更新'
 import SyncSetState from './components/setState的setTimeout同步更新/index'
 import UseReducer from './components/useReducer的dispatch/parent'
 import WindowCount from './components/useEffect只执行一次内部有window.addEventListener/index'
@@ -39,6 +40,8 @@ function App() {
       </header> */}
       {/* <UseReducer/> */}
       <WindowCount/>
+      {/* <Event/> */}
+      {/* <UseReducer/> */}
     </div>
   );
 }
