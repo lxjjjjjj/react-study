@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
 window.addEventListener("click", event => {
 console.log("window");
 });
@@ -45,4 +46,7 @@ CLICK ME
 );
 }
 
+
 export default App
+
+

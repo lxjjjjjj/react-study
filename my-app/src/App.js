@@ -20,6 +20,7 @@ import CounterEleven from './components/把函数移到useEffect里/index'
 import Event from './components/解耦来自actions的更新'
 import SyncSetState from './components/setState的setTimeout同步更新/index'
 import UseReducer from './components/useReducer的dispatch/parent'
+import EventSync from './components/合成事件'
 function App() {
   return (
     <div className="App">
@@ -37,10 +38,9 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Event/>
+      <EventSync/>
       {/* <UseReducer/> */}
     </div>
   );
 }
-
 export default App;
