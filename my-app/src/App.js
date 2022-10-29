@@ -21,6 +21,7 @@ import Event from './components/解耦来自actions的更新'
 import SyncSetState from './components/setState的setTimeout同步更新/index'
 import UseReducer from './components/useReducer的dispatch/parent'
 import EventSync from './components/合成事件'
+import WindowCount from './components/useEffect只执行一次内部有window.addEventListener/index'
 function App() {
   return (
     <div className="App">
@@ -39,6 +40,9 @@ function App() {
         </a>
       </header> */}
       <EventSync/>
+      {/* <UseReducer/> */}
+      {/* <WindowCount/> */}
+      {/* <Event/> */}
       {/* <UseReducer/> */}
     </div>
   );
