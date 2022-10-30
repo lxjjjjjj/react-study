@@ -22,7 +22,9 @@ import './App.css';
 // import SyncSetState from './components/setState的setTimeout同步更新/index'
 // import UseReducer from './components/useReducer的dispatch/parent'
 // import EventSync from './components/合成事件'
-import ThisEvent from  './components/react的this指向'
+// import ThisEvent from  './components/react的this指向'
+// import GetDerivedState from './components/getDrived'
+import WillMount from './components/componentWillMount'
 // import WindowCount from './components/useEffect只执行一次内部有window.addEventListener/index'
 function App() {
   return (
@@ -41,10 +43,12 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <ThisEvent/>
+      {/* <ThisEvent/> */}
+      {/* <GetDerivedState/> */}
       {/* <UseReducer/> */}
       {/* <WindowCount/> */}
       {/* <Event/> */}
+      <WillMount/>
       {/* <UseReducer/> */}
     </div>
   );
