@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
+
 window.addEventListener("click", event => {
 console.log("window");
 });
 
 
 document.addEventListener("click", event => {
+    // event.stopImmediatePropagation()
 console.log("document:bedore react mount");
 });
 
 
 document.body.addEventListener("click", event => {
-console.log("body");
+    // event.stopPropagation();
+    console.log("body");
 });
 
 
@@ -22,9 +24,11 @@ console.log("document within react");
 
 
 useEffect(() => {
-document.addEventListener("click", documentHandler);
+    // 1.window.addEventListener("click", documentHandler);
+    document.addEventListener("click", documentHandler);
 return () => {
-document.removeEventListener("click", documentHandler);
+    // 1.window.removeEventListener("click", documentHandler);
+    document.addEventListener("click", documentHandler);
 };
 }, []);
 
@@ -37,6 +41,8 @@ console.log("raect:container");
 >
 <button
 onClick={event => {
+    // 1.event.stopPropagation()
+    // 2.event.nativeEvent.stopImmediatePropagation();
 console.log("react:button");
 }}
 >
