@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import ComponentOne from './ComponentOne.js'
 const BoxStyle = ({ children })=><div className='card' >{ children }</div>
 function App() {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 const ComponentFour = ({ consoleFiber }) => {
   const [ number , setNumber  ] = useState(0)
   console.log('组件渲染',number)
