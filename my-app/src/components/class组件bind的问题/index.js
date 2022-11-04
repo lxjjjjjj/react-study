@@ -1,22 +1,24 @@
-import ProfilePage from "./child";
 import React from 'react'
-class IndexPage extends React.Component {
-    constructor(props) {
-      super(props);
-      this.showMessage = this.showMessage.bind(this);
-      this.handleClick = this.handleClick.bind(this);
+class ProfilePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: 'Dan'
     }
-  
-    showMessage() {
-      alert('Followed ' + this.props.user);
-    }
-  
-    handleClick() {
-      setTimeout(this.showMessage, 3000);
-    }
-  
-    render() {
-      return <button onClick={this.handleClick}>Follow</button>;
-    }
+    this.showMessage = this.showMessage.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
-  export default IndexPage
+
+  showMessage() {
+    alert('Followed ' + this.state.user);
+  }
+
+  handleClick() {
+    setTimeout(this.showMessage, 3000);
+  }
+
+  render() {
+    return <button onClick={this.handleClick}>Follow</button>;
+  }
+}
+export default ProfilePage

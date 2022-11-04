@@ -24,7 +24,8 @@ import './App.css';
 // import EventSync from './components/合成事件'
 // import ThisEvent from  './components/react的this指向'
 // import GetDerivedState from './components/getDrived'
-import WillMount from './components/componentWillMount'
+// import WillMount from './components/componentWillMount'
+import ClassBind from './components/class组件bind的问题/index' 
 // import WindowCount from './components/useEffect只执行一次内部有window.addEventListener/index'
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
       {/* <UseReducer/> */}
       {/* <WindowCount/> */}
       {/* <Event/> */}
-      <WillMount/>
+      <ClassBind/>
       {/* <UseReducer/> */}
     </div>
   );
