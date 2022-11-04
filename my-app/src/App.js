@@ -19,13 +19,13 @@ import './App.css';
 // import CounterTen from './components/为什么useReducer是Hooks的作弊模式/index'
 // import CounterEleven from './components/把函数移到useEffect里/index'
 // import Event from './components/解耦来自actions的更新'
-// import SyncSetState from './components/setState的setTimeout同步更新/index'
+import SyncSetState from './components/setState的setTimeout同步更新/index'
 // import UseReducer from './components/useReducer的dispatch/parent'
 // import EventSync from './components/合成事件'
 // import ThisEvent from  './components/react的this指向'
 // import GetDerivedState from './components/getDrived'
 // import WillMount from './components/componentWillMount'
-import ClassBind from './components/class组件bind的问题/index' 
+// import ClassBind from './components/class组件bind的问题/index' 
 // import WindowCount from './components/useEffect只执行一次内部有window.addEventListener/index'
 function App() {
   return (
@@ -49,7 +49,7 @@ function App() {
       {/* <UseReducer/> */}
       {/* <WindowCount/> */}
       {/* <Event/> */}
-      <ClassBind/>
+      <SyncSetState/>
       {/* <UseReducer/> */}
     </div>
   );
