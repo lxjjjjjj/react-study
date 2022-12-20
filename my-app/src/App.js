@@ -24,8 +24,12 @@ import './App.css';
 // import EventSync from './components/合成事件'
 // import ThisEvent from  './components/react的this指向'
 // import GetDerivedState from './components/getDrived'
-import WillMount from './components/componentWillMount'
+// import WillMount from './components/componentWillMount'
 // import WindowCount from './components/useEffect只执行一次内部有window.addEventListener/index'
+// import UseRefucerTimes from './components/useReducer的setState执行几次'
+// import DispatchObjectState from './components/state是个对象不会更新视图'
+// import UseReducerFunc from './components/useReducer做性能优化'
+import UseImperativeHandle from "./components/useImperativeHandle";
 function App() {
   return (
     <div className="App">
@@ -48,8 +52,12 @@ function App() {
       {/* <UseReducer/> */}
       {/* <WindowCount/> */}
       {/* <Event/> */}
-      <WillMount/>
+      {/* <WillMount/> */}
       {/* <UseReducer/> */}
+      {/* <UseRefucerTimes/> */}
+      {/* <DispatchObjectState/> */}
+      {/* <UseReducerFunc/> */}
+      <UseImperativeHandle/>
     </div>
   );
 }
