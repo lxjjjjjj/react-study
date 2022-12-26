@@ -5,6 +5,7 @@ import './App.css';
 // import ParentTwo from './components/two/parentTwo'
 // import ParentThree from './components/three/parentThree'
 // import ParentFour from './components/four/ParentFour'
+import UseRef from './components/UseRef重新渲染/index'
 // import ParentFive from './components/five/ParentFive'
 // import Seven from './components/seven/index'
 // import Counter from './components/每次渲染都有新的props和state/index'
@@ -19,7 +20,7 @@ import './App.css';
 // import CounterTen from './components/为什么useReducer是Hooks的作弊模式/index'
 // import CounterEleven from './components/把函数移到useEffect里/index'
 // import Event from './components/解耦来自actions的更新'
-import SyncSetState from './components/setState的setTimeout同步更新/index'
+// import SyncSetState from './components/setState的setTimeout同步更新/index'
 // import UseReducer from './components/useReducer的dispatch/parent'
 // import EventSync from './components/合成事件'
 // import ThisEvent from  './components/react的this指向'
@@ -30,6 +31,7 @@ import SyncSetState from './components/setState的setTimeout同步更新/index'
 // import UseRefucerTimes from './components/useReducer的setState执行几次'
 // import DispatchObjectState from './components/state是个对象不会更新视图'
 // import UseReducerFunc from './components/useReducer做性能优化'
+import UseDeferredValue from './components/useDeferredValue'
 import UseImperativeHandle from "./components/useImperativeHandle";
 function App() {
   return (
@@ -54,12 +56,14 @@ function App() {
       {/* <WindowCount/> */}
       {/* <Event/> */}
       {/* <WillMount/> */}
-      <SyncSetState/>
+      {/* <SyncSetState/> */}
       {/* <UseReducer/> */}
       {/* <UseRefucerTimes/> */}
       {/* <DispatchObjectState/> */}
       {/* <UseReducerFunc/> */}
-      <UseImperativeHandle/>
+      {/* <UseDeferredValue/> */}
+      {/* <UseImperativeHandle/> */}
+      <UseRef/>
     </div>
   );
 }
