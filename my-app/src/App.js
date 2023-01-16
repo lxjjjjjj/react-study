@@ -33,6 +33,7 @@ import UseRef from './components/UseRef重新渲染/index'
 // import UseReducerFunc from './components/useReducer做性能优化'
 import UseDeferredValue from './components/useDeferredValue'
 import UseImperativeHandle from "./components/useImperativeHandle";
+import Swiper from './components/swiper'
 function App() {
   return (
     <div className="App">
@@ -63,7 +64,8 @@ function App() {
       {/* <UseReducerFunc/> */}
       {/* <UseDeferredValue/> */}
       {/* <UseImperativeHandle/> */}
-      <UseRef/>
+      {/* <UseRef/> */}
+      <Swiper/>
     </div>
   );
 }
